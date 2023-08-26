@@ -1,8 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/operations';
+import PropTypes from 'prop-types';
 import css from './Contact.module.css';
 
-export const Contact = ({ contact }) => {
+const Contact = ({ contact }) => {
   const { name, number, id } = contact;
   const dispatch = useDispatch();
 
@@ -22,4 +23,13 @@ export const Contact = ({ contact }) => {
       </button>
     </>
   );
+};
+
+export default Contact;
+
+Contact.propTypes = {
+  contact: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+  }).isRequired,
 };
